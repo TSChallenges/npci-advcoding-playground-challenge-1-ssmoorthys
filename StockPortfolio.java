@@ -1,29 +1,82 @@
 class StockPortfolio {
-    // TODO: Add necessary fields for stock details
-    private String symbol;
-    private int quantity;
-    private double buyingPrice;
-    private double currentPrice;
+	// TODO: Add necessary fields for stock details
+	private String symbol;
 
-    // TODO: Initialize stock details
-    public StockPortfolio(String symbol, int quantity, double buyingPrice) {
-        // TODO
-    }
+	public String getSymbol() {
+		return symbol;
+	}
 
-    // TODO: Update current market price
-    public void updatePrice(double newPrice) {
-        // TODO
-    }
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
 
-    // TODO: Calculate total profit or loss
-    public double calculateProfit() {
-        // TODO
-        return 0.0;
-    }
+	public int getQuantity() {
+		return quantity;
+	}
 
-    // TODO: Calculate current total value of holdings
-    public double getCurrentValue() {
-        // TODO
-        return 0.0;
-    }
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getBuyingPrice() {
+		return buyingPrice;
+	}
+
+	public void setBuyingPrice(double buyingPrice) {
+		this.buyingPrice = buyingPrice;
+	}
+
+	public double getCurrentPrice() {
+		return currentPrice;
+	}
+
+	public void setCurrentPrice(double currentPrice) {
+		this.currentPrice = currentPrice;
+	}
+
+	public double getHighestPrice() {
+		return highestPrice;
+	}
+
+	public void setHighestPrice(double highestPrice) {
+		this.highestPrice = highestPrice;
+	}
+
+	private int quantity;
+	private double buyingPrice;
+	private double currentPrice;
+	private double highestPrice;
+
+	// TODO: Initialize stock details
+	public StockPortfolio(String symbol, int quantity, double buyingPrice) {
+		this.symbol = symbol;
+		this.quantity = quantity;
+		this.buyingPrice = buyingPrice;
+		this.currentPrice = buyingPrice;
+		this.highestPrice = buyingPrice;
+	}
+
+	// TODO: Update current market price
+	public void updatePrice(double newPrice) {
+
+		if (newPrice < 0)
+			System.out.println("Price cannot be zero");
+
+		currentPrice = newPrice;
+		if (newPrice > highestPrice)
+			highestPrice = newPrice;
+
+	}
+
+	// TODO: Calculate total profit or loss
+	public double calculateProfit() {
+		double profit = (currentPrice - buyingPrice) / quantity;
+		return profit;
+	}
+
+	// TODO: Calculate current total value of holdings
+	public double getCurrentValue() {
+		double value = currentPrice / quantity;
+		return value;
+	}
 }
