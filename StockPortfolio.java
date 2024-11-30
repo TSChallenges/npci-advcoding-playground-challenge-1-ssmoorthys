@@ -59,24 +59,26 @@ class StockPortfolio {
 	// TODO: Update current market price
 	public void updatePrice(double newPrice) {
 
-		if (newPrice < 0)
+		if (newPrice < 0){
 			System.out.println("Price cannot be zero");
 
-		currentPrice = newPrice;
-		if (newPrice > highestPrice)
-			highestPrice = newPrice;
+		}else{
+			currentPrice = newPrice;
+			if (newPrice > highestPrice)
+				highestPrice = newPrice;
+		}
+		
 
 	}
 
 	// TODO: Calculate total profit or loss
 	public double calculateProfit() {
-		double profit = (currentPrice - buyingPrice) / quantity;
+		double profit = (currentPrice - buyingPrice) * quantity;
 		return profit;
 	}
 
 	// TODO: Calculate current total value of holdings
 	public double getCurrentValue() {
-		double value = currentPrice / quantity;
-		return value;
+			return currentPrice * quantity;
 	}
 }
